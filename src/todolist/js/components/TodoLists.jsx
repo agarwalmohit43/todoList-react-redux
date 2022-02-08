@@ -1,13 +1,15 @@
 import React, { useRef, useState } from "react";
 import { connect } from "react-redux";
-import { add, toggleDone } from "../../action/todoList";
+
+import Lists from "./Lists";
+import { add } from "../../action/todoList";
 import "../../style/TodoList.scss";
 
 function TodoLists(props) {
   const [itemTitle, setItemTitle] = useState("");
   const inputRef = useRef();
 
-  const handleClick = () => {
+  const handleAdd = () => {
     if (itemTitle !== "") {
       inputRef.current.classList.contains("error") &&
         inputRef.current.classList.remove("error");
@@ -19,11 +21,12 @@ function TodoLists(props) {
     }
   };
 
-  const handleToggleItem = (id) => {
-    if (id) {
-      props.toggleDone(id);
-    }
-  };
+  const renderList =
+    Object.keys(props.todoLists).length > 0 ? (
+      <Lists lists={props.todoLists} />
+    ) : (
+      <span>List is emplty</span>
+    );
 
   return (
     <>
@@ -38,25 +41,14 @@ function TodoLists(props) {
           }}
           ref={inputRef}
         />
-        <button onClick={handleClick}>Add</button>
+        <button className="btn btn-primary" onClick={handleAdd}>
+          Add
+        </button>
       </div>
        
       <div className={"Lists"}>
         <h1>Todo Lists</h1>
-        <ul>
-          {Object.keys(props.todoLists).length > 0 &&
-            Object.keys(props.todoLists).map((id, index) => {
-              return (
-                <li
-                  key={index}
-                  onClick={() => handleToggleItem(id)}
-                  className={`${props.todoLists[id].done && "done"}`}
-                >
-                  {props.todoLists[id].title}
-                </li>
-              );
-            })}
-        </ul>
+        {renderList}
       </div>
     </>
   );
@@ -69,7 +61,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   add,
-  toggleDone,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoLists);
