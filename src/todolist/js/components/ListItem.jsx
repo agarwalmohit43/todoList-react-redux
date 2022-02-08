@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { toggleDone, updateTitle, deleteItem } from "../../action/todoList";
 
-function ListItem({ item, titleId, toggleDone }) {
+function ListItem({ item, titleId, toggleDone, updateTitle, deleteItem }) {
   // const handleClick = (e) => {
   //   console.log(e);
   //   let id = e.target.id;
@@ -28,23 +28,25 @@ function ListItem({ item, titleId, toggleDone }) {
   };
   return (
     <div>
-      <div className="contents">
-        <span
-          id={"title" + titleId}
-          className={`${item.done && "done"}`}
-          onClick={handleToggleItem}
-        >
-          {item.title}
-        </span>
-      </div>
-      <div className="actions">
-        <button id={"edit" + titleId} onClick={handleEdit}>
-          Edit
-        </button>
-        <button id={"delete" + titleId} onClick={handleDelete}>
-          Delete
-        </button>
-      </div>
+      <li>
+        <div className="contents">
+          <span
+            id={"title" + titleId}
+            className={`${item.done && "done"}`}
+            onClick={handleToggleItem}
+          >
+            {item.title}
+          </span>
+        </div>
+        <div className="actions">
+          <button id={"edit" + titleId} onClick={handleEdit}>
+            Edit
+          </button>
+          <button id={"delete" + titleId} onClick={handleDelete}>
+            Delete
+          </button>
+        </div>
+      </li>
     </div>
   );
 }

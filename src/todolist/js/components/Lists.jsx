@@ -8,9 +8,11 @@ function Lists({ lists }) {
       <ul>
         {Object.keys(lists).map((titleId, index) => {
           return (
-            <li key={index}>
-              <ListItem item={lists[titleId]} titleId={titleId} />
-            </li>
+            <ListItem
+              key={index + titleId}
+              item={lists[titleId]}
+              titleId={titleId}
+            />
           );
         })}
       </ul>
