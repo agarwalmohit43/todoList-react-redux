@@ -51,6 +51,7 @@ function ListItem({ item, titleId, toggleDone, updateTitle, deleteItem }) {
   );
 }
 
+// mapDispatchToProps function way
 // const mapDispatchToProps = (dispatch, ownProps) => {
 //   // toggleDone,
 //   // updateTitle,

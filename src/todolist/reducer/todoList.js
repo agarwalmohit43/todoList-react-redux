@@ -20,11 +20,13 @@ export const todoLists = (state = initialState, action) => {
   } else if (action.type === TOGGLE_DONE) {
     let { id } = action.payload;
     state[id].done = !state[id].done;
-    return { ...state };
+    return { ...state, [id]: { ...state[id] } };
   } else if (action.type === EDIT_TOGGLE_TITLE) {
     let { id, newTitle } = action.payload;
+    // let obj = { ...state[id] };
+    // obj.title = newTitle;
     state[id].title = newTitle;
-    return { ...state };
+    return { ...state, [id]: { ...state[id] } };
   } else if (action.type === DELETE) {
     console.log(state, action);
     let { id } = action.payload;
