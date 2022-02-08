@@ -1,4 +1,4 @@
-import { ADD, MARK_DONE, TOGGLE_DONE } from "../common/Constant";
+import { ADD, MARK_DONE, TOGGLE_DONE } from "../../common/js/Constant";
 export const add = (item) => {
   return {
     type: ADD,

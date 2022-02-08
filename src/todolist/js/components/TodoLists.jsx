@@ -1,17 +1,21 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { connect } from "react-redux";
-import { add, toggleDone } from "../actions/todoList";
-import "../style/TodoList.scss";
+import { add, toggleDone } from "../../action/todoList";
+import "../../style/TodoList.scss";
 
 function TodoLists(props) {
   const [itemTitle, setItemTitle] = useState("");
+  const inputRef = useRef();
 
   const handleClick = () => {
     if (itemTitle !== "") {
+      inputRef.current.classList.contains("error") &&
+        inputRef.current.classList.remove("error");
       props.add({ [new Date().getTime()]: { title: itemTitle, done: false } });
       setItemTitle("");
     } else {
       console.log("Empty item cannot be added");
+      inputRef.current.classList.add("error");
     }
   };
 
@@ -26,7 +30,13 @@ function TodoLists(props) {
       <div className="create-list">
         <input
           value={itemTitle}
-          onChange={(e) => setItemTitle(e.target.value)}
+          onChange={(e) => {
+            //First, remove error border
+            // inputRef.current.classList.contains("error") &&
+            //   inputRef.current.classList.remove("error");
+            setItemTitle(e.target.value);
+          }}
+          ref={inputRef}
         />
         <button onClick={handleClick}>Add</button>
       </div>

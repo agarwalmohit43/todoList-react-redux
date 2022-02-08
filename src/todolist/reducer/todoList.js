@@ -1,4 +1,4 @@
-import { ADD, MARK_DONE, TOGGLE_DONE } from "../common/Constant";
+import { ADD, MARK_DONE, TOGGLE_DONE } from "../../common/js/Constant";
 
 const initialState = {
   1: { title: "Item 1", done: false },
