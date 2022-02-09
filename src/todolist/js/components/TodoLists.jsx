@@ -47,7 +47,7 @@ function TodoLists(props) {
       </div>
        
       <div className={"Lists"}>
-        <h1>Todo Lists</h1>
+        <h1>Todo List</h1>
         {renderList}
       </div>
     </>

@@ -28,9 +28,9 @@ function ListItem({ item, titleId, toggleDone, updateTitle, deleteItem }) {
     updateTitle(titleId, "item" + new Date().getTime());
   };
   return (
-    <div>
+    <div className="todolist-item">
       <li>
-        <div className="todolist-item">
+        <div className="items">
           <div className="contents">
             <input
               type={"checkbox"}
