@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import { toggleDone, updateTitle, deleteItem } from "../../action/todoList";
+import { toggleDone, deleteItem, selectedItem } from "../../action/todoList";
 
-function ListItem({ item, titleId, toggleDone, updateTitle, deleteItem }) {
+function ListItem({ item, titleId, toggleDone, deleteItem, selectedItem }) {
   // const handleClick = (e) => {
   //   console.log(e);
   //   let id = e.target.id;
@@ -25,7 +25,7 @@ function ListItem({ item, titleId, toggleDone, updateTitle, deleteItem }) {
   };
 
   const handleEdit = () => {
-    updateTitle(titleId, "item" + new Date().getTime());
+    selectedItem(item, titleId);
   };
   return (
     <div className="todolist-item">
@@ -73,8 +73,8 @@ function ListItem({ item, titleId, toggleDone, updateTitle, deleteItem }) {
 
 const mapDispatchToProps = {
   toggleDone,
-  updateTitle,
   deleteItem,
+  selectedItem,
 };
 
 export default connect(null, mapDispatchToProps)(ListItem);

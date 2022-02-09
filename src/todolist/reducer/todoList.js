@@ -4,6 +4,8 @@ import {
   TOGGLE_DONE,
   EDIT_TOGGLE_TITLE,
   DELETE,
+  SELECTED_TITLE,
+  CLEAR_SELECTED_TITLE,
 } from "../../common/js/Constant";
 
 const initialState = {
@@ -32,6 +34,16 @@ export const todoLists = (state = initialState, action) => {
     let { id } = action.payload;
     delete state[id];
     return { ...state };
+  }
+  return state;
+};
+
+export const selectedItem = (state = null, action) => {
+  if (action.type === SELECTED_TITLE) {
+    let { titleId, item } = action.payload;
+    return { titleId, item };
+  } else if (action.type === CLEAR_SELECTED_TITLE) {
+    return null;
   }
   return state;
 };

@@ -4,6 +4,8 @@ import {
   TOGGLE_DONE,
   EDIT_TOGGLE_TITLE,
   DELETE,
+  SELECTED_TITLE,
+  CLEAR_SELECTED_TITLE,
 } from "../../common/js/Constant";
 export const add = (item) => {
   return {
@@ -47,5 +49,21 @@ export const deleteItem = (id) => {
   return (dispatch, getState) => {
     console.log(dispatch, getState());
     dispatch({ type: DELETE, payload: { id } });
+  };
+};
+
+export const selectedItem = (item, titleId) => {
+  return {
+    type: SELECTED_TITLE,
+    payload: {
+      item,
+      titleId,
+    },
+  };
+};
+
+export const clearSelectedItem = () => {
+  return {
+    type: CLEAR_SELECTED_TITLE,
   };
 };
