@@ -3,17 +3,18 @@ import { connect } from "react-redux";
 import { toggleDone, updateTitle, deleteItem } from "../../action/todoList";
 
 function ListItem({ item, titleId, toggleDone, updateTitle, deleteItem }) {
-  const handleClick = (e) => {
-    console.log(e);
-    let id = e.target.id;
-    if (id === "edit" + titleId) {
-      handleEdit();
-    } else if (id === "delete" + titleId) {
-      handleDelete();
-    } else if (id === "title" + titleId) {
-      handleToggleItem();
-    }
-  };
+  // const handleClick = (e) => {
+  //   console.log(e);
+  //   let id = e.target.id;
+  //   if (id === "edit" + titleId) {
+  //     handleEdit();
+  //   } else if (id === "delete" + titleId) {
+  //     handleDelete();
+  //   } else if (id === "title" + titleId) {
+  //     // handleToggleItem();
+  //     console.log("called");
+  //   }
+  // };
 
   const handleToggleItem = () => {
     toggleDone(titleId);
@@ -28,15 +29,26 @@ function ListItem({ item, titleId, toggleDone, updateTitle, deleteItem }) {
   };
   return (
     <div>
-      <li onClick={(e) => handleClick(e)}>
-        <div className="contents">
-          <span id={"title" + titleId} className={`${item.done && "done"}`}>
-            {item.title}
-          </span>
-        </div>
-        <div className="actions">
-          <button id={"edit" + titleId}>Edit</button>
-          <button id={"delete" + titleId}>Delete</button>
+      <li>
+        <div className="todolist-item">
+          <div className="contents">
+            <input
+              type={"checkbox"}
+              checked={item.done}
+              onChange={handleToggleItem}
+            />
+            <span id={"title" + titleId} className={`${item.done && "done"}`}>
+              {item.title}
+            </span>
+          </div>
+          <div className="actions">
+            <button id={"edit" + titleId} onClick={handleEdit}>
+              Edit
+            </button>
+            <button id={"delete" + titleId} onClick={handleDelete}>
+              Delete
+            </button>
+          </div>
         </div>
       </li>
     </div>

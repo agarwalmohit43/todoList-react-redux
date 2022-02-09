@@ -1,7 +1,21 @@
+// * {
+//   margin: 0;
+//   padding: 0;
+// }
+
 .done {
   text-decoration: line-through;
 }
 
 .error {
   border: 1px solid red;
+}
+
+.todolist-item {
+  display: flex;
+  .actions {
+    button {
+      margin: 0 5px 0 5px;
+    }
+  }
 }
