@@ -3,6 +3,11 @@
 //   padding: 0;
 // }
 
+.create-list {
+  button {
+    margin: 0 10px 0 10px;
+  }
+}
 .done {
   text-decoration: line-through;
 }
@@ -14,6 +19,7 @@
 .todolist-item {
   li {
     list-style-type: none;
+    margin: 10px 0 10px 0;
   }
   .items {
     display: flex;
